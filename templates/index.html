@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DjangoDB</title>
+</head>
+
+<body>
+
+    <ul>
+        {% for item i lista_itens %}
+        <li>{{item.id}}:{{item.titulo}}-{{item.texto}}-{{item.data|date: 'd/m/Y'}}-{{item.hora}}:</li>
+    </ul>
+    {%empty%}
+    <li>Sem comentários na lista</li>
+    {%endfor}
+</body>
+
+</html>
