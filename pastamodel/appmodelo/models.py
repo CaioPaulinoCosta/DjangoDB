@@ -1,6 +1,6 @@
 from django.db import models
 
-class Comentario(models.Mode):
+class Comentario(models.Model):
     
     id = models.Autofield(primary_key=True)
     titulo = models.CharField(max_lenght=100)
