@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+class Comentario(models.Mode):
+    
+    id = models.Autofield(primary_key=True)
+    titulo = models.CharField(max_lenght=100)
+    texto = models.TextField()
+    data = model.DataTimeField(auto_now_add=True)
+    hora = model.TimeField(auto_now_add=True)
+    
