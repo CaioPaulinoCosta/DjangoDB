@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Clientes</title>
+</head>
+<body>
+    <div class="container p-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Endereço</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for item in lista_itens %}
+              <tr>
+                <th scope="row"> {{item.id}}</th>
+                <td> {{item.nome}}</td>
+                <td> {{item.idade}}</td>
+                <td> {{item.email}}</td>
+                <td> {{item.telefone}}</td>
+                <td> {{item.endereco}}</td>
+              </tr>
+              {%empty%}
+              <td>Nenhum cliente cadastrado</td>
+              {% endfor %}
+            </tbody>
+          </table>
+          <a href="{% url 'register_page' %}"><button class="btn btn-primary">Adicionar cliente</button></a>   
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
