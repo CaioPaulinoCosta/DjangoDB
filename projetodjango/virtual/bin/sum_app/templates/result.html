@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .result{
+            font-size: 24px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro de cliente</h1>
+    <form method="POST" action="{% url 'ClienteForm' %}">
+        {% csrf_token %}
+        <input type="text" name="nome" placeholder="Digite seu nome">
+        <input type="text" name="idade" placeholder="Digite sua idade">
+        <input type="text" name="email" placeholder="Digite seu email">
+        <input type="text" name="telefone" placeholder="Digite seu telefone">
+        <input type="text" name="endereco" placeholder="Digite seu endereco">
+        <input type="submit" value="Enviar">
+    </form>
+    <ul>
+        {% for item in lista_itens %}
+            <li>
+            {{item.id}}:{{item.titulo}}-{{item.texto}}-{{item.data|date:'d/m/Y'}}-{{item.hora}}
+            </li>
+        {%empty%}
+            <li> Sem comentários na lista</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
