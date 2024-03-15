@@ -1,11 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect  # Adicionei 'redirect'
 from sum_app.models import Cliente
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 
 def index(request):
     lista_itens = Cliente.objects.all()
-    return render(request, 'users.html', {'lista_itens': lista_itens})
+
+    # Verifica se há clientes cadastrados
+    if lista_itens.exists():
+        return render(request, 'users.html', {'lista_itens': lista_itens})
+    else:
+        return redirect('register_page')  # Redireciona para 'register_page' se não houver clientes cadastrados
+
+def register_page(request):
+    return render(request, 'register.html')
 
 @csrf_exempt
 def ClienteForm(request):
