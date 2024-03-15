@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,13 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!r4echsg92k3@b&3*(hdopzwo@$$4--mh&m!_u^13im#s^iq31'
+SECRET_KEY = 'django-insecure-xp$ju_t@cs0sd!4oo39x1ie4v4e%^ww_noil82rkp7mo^!wb5^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-caiopaulinocos-djangodb-c1aunl0keq7.ws-us108.gitpod.io']
-
+ALLOWED_HOSTS = ['8000-ikatahira-djangobd-hh9j0cv640d.ws-us110.gitpod.io',]
+                
 
 # Application definition
 
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'projmodel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'meuapp', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,4 +1,4 @@
-#!/workspace/DjangoDB/pastamodel/virtual/bin/python
+#!/workspace/djangobd/pastamodel/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

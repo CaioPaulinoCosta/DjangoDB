@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        {% for item in lista_itens %}
+            <li>
+            {{item.id}}:{{item.titulo}}-{{item.texto}}-{{item.data|date:'d/m/Y'}}-{{item.hora}}
+            </li>
+        {%empty%}
+            <li> Sem comentários na lista</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
