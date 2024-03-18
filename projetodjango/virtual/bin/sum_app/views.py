@@ -1,19 +1,24 @@
 from django.shortcuts import render, redirect  # Adicionei 'redirect'
 from sum_app.models import Cliente
+from sum_app.models import ItemPedido
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
 
 def index(request):
     lista_itens = Cliente.objects.all()
 
-    # Verifica se há clientes cadastrados
     if lista_itens.exists():
         return render(request, 'users.html', {'lista_itens': lista_itens})
     else:
-        return redirect('register_page')  # Redireciona para 'register_page' se não houver clientes cadastrados
+        return redirect('register_page') 
 
 def register_page(request):
     return render(request, 'register.html')
+
+def register_item(request):
+    lista_itens = Cliente.objects.all()
+    return render(request, 'register_item.html', {'lista_itens': lista_itens})
+
 
 @csrf_exempt
 def ClienteForm(request):
@@ -39,3 +44,17 @@ def calcular_idade(data_nascimento):
     if data_atual.month < data_nascimento.month or (data_atual.month == data_nascimento.month and data_atual.day < data_nascimento.day):
         idade -= 1
     return idade
+
+@csrf_exempt
+def PedidoForm(request):
+    register_pedido = {}  
+    if request.method == 'POST':
+        nomeItem = request.POST.get('nomeItem')
+        quantidadeItem = request.POST.get('quantidadeItem') 
+        idCliente = request.POST.get('idCliente')
+        
+        novo_item = ItemPedido.objects.create(nomeItem=nomeItem, quantidadeItem=quantidadeItem, idCliente=idCliente)
+        lista_produtos = ItemPedido.objects.all()
+        return render(request, 'users.html', {'lista_produtos': lista_produtos, 'nomeItem': nomeItem, 'quantidadeItem': quantidadeItem, 'idCliente': idCliente, 'register_pedido': register_pedido})
+    lista_produtos = ItemPedido.objects.all()
+    return render(request, 'users.html', {'lista_produtos': lista_produtos, 'register_pedido': register_pedido})

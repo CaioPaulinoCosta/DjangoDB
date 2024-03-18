@@ -11,5 +11,15 @@ class Cliente(models.Model):
     endereco = models.TextField(max_length=100)
     
 def __str__(self):
-    return self.titulo
+    return self.nome
+
+class ItemPedido(models.Model):
+    id = models.AutoField(primary_key=True)
+    nomeItem = models.CharField(max_length=100)
+    quantidadeItem = models.CharField(max_length=100)
+    idCliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    
+def __str__(self):
+    return self.nomeItem
+
     
